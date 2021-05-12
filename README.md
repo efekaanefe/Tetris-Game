@@ -1,6 +1,5 @@
 # Tetris-Game
-![](Images/1.png)
-![](Images/2.png)
+
 
 
 PROS:
@@ -31,3 +30,6 @@ CONTROLS
 -right arrow -> right
 -space -> inactivates the current piece (player shouldn´t use it)
 
+
+<img src="Tetris/Images/1.png" width="500"> 
+<img src="Tetris/Images/2.png" width="500">
