@@ -7,7 +7,7 @@ pygame
 HOW TO PLAY:
 run main.py
 
-press any keyt to start playing
+press any key to start playing
 
 -down arrow -> fast down
 -up arrow -> rotate
