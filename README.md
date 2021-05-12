@@ -27,3 +27,4 @@ CONTROLS
 -left arrow -> left
 -right arrow -> right
 -space -> inactivates the current piece (player shouldn´t use it)
+
