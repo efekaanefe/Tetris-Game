@@ -1,5 +1,6 @@
 # Tetris-Game
-
+![](Images/1.png)
+![](Images/2.png)
 PROS:
 Pieces get faster depending on level (level system depends on how many pieces came to the game)(i.e. after every 10 pieces level increases +1)(not a pro or con).
 Keeps your best score in a .txt file.
