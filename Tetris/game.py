@@ -192,7 +192,7 @@ class Game:
 		random_shape = random.choice(shapes)
 		random_color = random.choice(shape_colors)
 
-		return Shape(random_shape, random_color, 0, 4, self.inactive_shapes, self.grids)
+		return Shape(random_shape, random_color, -3, 4, self.inactive_shapes, self.grids)
 
 	def update_current_and_next_shape(self):
 		self.current_shape = self.next_shape
