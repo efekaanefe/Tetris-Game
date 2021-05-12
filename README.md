@@ -1,5 +1,4 @@
 # Tetris-Game
-python/pygame
 
 PROS:
 Pieces get faster depending on level (level system depends on how many pieces came to the game)(i.e. after every 10 pieces level increases +1)(not a pro or con)
@@ -12,7 +11,6 @@ Pieces are inactivated immediately after touching
 When moving a piece left/right, clock keeps ticking which limits possible piece end-locations
 No animation
 Rotation system doesn´t allow to rotate a piece that is at the edge, it would be better if it allows but shifts the piece a little
-
 
 
 REQUIREMENTS:
