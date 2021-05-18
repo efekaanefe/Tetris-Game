@@ -23,6 +23,7 @@ Rotation system doesn´t allow to rotate a piece that is at the edge, it would b
 
 
 # REQUIREMENTS:
+python3.
 pygame.
 
 # HOW TO PLAY:
