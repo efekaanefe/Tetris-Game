@@ -122,6 +122,7 @@ class Game:
 					row = (rect.y-1)/SQUARE_SIZE
 					self.rects_in_rows[row] += 1
 		except KeyError:
+			self.gameover = True
 			print("KeyError occured")
 
 	def update_inactive_shapes(self):
