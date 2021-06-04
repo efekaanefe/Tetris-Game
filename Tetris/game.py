@@ -123,7 +123,7 @@ class Game:
 					self.rects_in_rows[row] += 1
 		except KeyError:
 			self.gameover = True
-			print("KeyError occured")
+			#print("KeyError occured")
 
 	def update_inactive_shapes(self):
 		if self.current_shape.active == False:
