@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from game import Game
 from shape import shapes, shape_colors, Shape
 from constants import *
@@ -37,6 +37,8 @@ def main(best_score):
 			
 			if event.type == pygame.QUIT:
 				gameover = True
+				sys.exit()
+
 
 			elif event.type == pygame.KEYDOWN:
 
@@ -50,15 +52,15 @@ def main(best_score):
 					GAME.current_shape.rotate()
 				
 				elif event.key == pygame.K_DOWN:
-					if not GAME.key_down_increase:
-						GAME.key_down_fps_increase()
-
+					if GAME.current_shape.time_increment == TIME_INCREMENT:
+						GAME.current_shape.time_increment *= 5 + GAME.level
 				#inactivates current shape
 				elif event.key == pygame.K_SPACE:
 					GAME.current_shape.make_inactive()
 					
 		GAME.update()		
 		pygame.display.update()
+		#print(GAME.gameover)
 
 		if GAME.gameover:
 			#drawing gameover text and score
@@ -103,7 +105,6 @@ def read_best_score():
 	file.close()
 	return best_score
 
-
 #overwrites best score
 def write_best_score(score):
 	file = open("bestscore.txt", "w")
@@ -147,4 +148,4 @@ def draw_main_menu_text():
 	WIN.blit(text, ((SCREEN_WIDTH-text.get_width())//2,(SCREEN_HEIGHT-text.get_height())-300//2))
 
 main_menu()
-#main()
+#main(0)

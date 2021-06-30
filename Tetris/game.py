@@ -45,6 +45,7 @@ class Game:
 		self.next_shape_surface = self._create_next_shape_surface()
 
 	def update(self):
+
 		self.blit_playground_surface()
 		self.blit_score_surface()
 		self.blit_best_score_surface()
@@ -54,35 +55,29 @@ class Game:
 		
 		self.remove_rects_in_full_row()
 
+
 		self.current_shape.update_activation_condition()
 		self.update_inactive_shapes()
 		self.update_level_and_fps()
 
-		
 		self.current_shape.move_shape_downward()
+		self.current_shape.time += self.current_shape.time_increment
+		
 		self.current_shape.update_init()
 		
 		self.draw_active_shape()
 		self.draw_inactive_shapes()
 		self.draw_grids()
+		#print(self.current_shape.time)
 
 	def check_gameover(self):
 		if self.rects_in_rows[0] != 0:
 			print("Gameover!")
 			self.gameover = True
 
-	def key_down_fps_increase(self):
-		self.fps += KEY_DOWN_FPS_CHANGE
-		self.key_down_increase = True
-	
-	def key_down_fps_decrease(self):
-		self.fps -= KEY_DOWN_FPS_CHANGE
-		self.key_down_increase = False
-
 	def update_level_and_fps(self):
 		if self.pieces == PIECE_REQUIRED_TO_INCREASE_LEVEL:
 			self.level += 1
-			self.fps +=	FPS_INCREASE_ON_EACH_LEVEL
 			self.pieces = 0
 
 	def score_depending_on_level(self, removed_lines):
@@ -123,12 +118,10 @@ class Game:
 					self.rects_in_rows[row] += 1
 		except KeyError:
 			self.gameover = True
-			#print("KeyError occured")
+			print("KeyError occured")
 
 	def update_inactive_shapes(self):
 		if self.current_shape.active == False:
-			if self.key_down_increase:
-				self.key_down_fps_decrease()
 			self.rects_in_rows = self.create_rects_in_rows()
 			#print(self.rects_in_rows)
 			self.inactive_shapes.append(self.current_shape)

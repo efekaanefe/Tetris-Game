@@ -27,6 +27,11 @@ class Shape:
         self.rects = []
         self.create_other_rects()
 
+        self.time = 0
+        self.time_increment = TIME_INCREMENT
+        self.inactive_time = 0
+
+
         #self.moveable_right = True
         #self.moveable_left = True
         #self.rotatable = True
@@ -45,7 +50,7 @@ class Shape:
             if len(self.inactive_shapes) != 0:
                 for inactive_shape in self.inactive_shapes:
                     for inactive_rect in inactive_shape.rects:
-                        if tmp_rect.colliderect(inactive_rect):
+                        if tmp_rect.colliderect(inactive_rect) and self.inactive_time == 1:
                             self.make_inactive()
                             return True
                         else:
@@ -53,7 +58,7 @@ class Shape:
         return False
 
     def make_inactive(self):
-            self.active = False
+        self.active = False
 
     def rotatable(self):
         ghost_rects = [self.center_rect]
@@ -86,6 +91,8 @@ class Shape:
     def rotate(self):
         if self.rotatable():
             self.update_init()
+            self.time = 0
+            self.inactive_time = 0
             self.rotation += 1
             try:
                 self.rotation = self.rotation % len(self.shape)
@@ -126,6 +133,11 @@ class Shape:
         for rect in self.rects:
             if rect.y + SQUARE_SIZE >= PLAYGROUND_HEIGHT:
                 return False
+            for shape in self.inactive_shapes:
+                for inactive_rect in shape.rects:
+                    if rect.x ==inactive_rect.x:
+                        if inactive_rect.y == rect.y+SQUARE_SIZE:
+                            return False
         return True
     
     def moveable_left(self):
@@ -154,11 +166,18 @@ class Shape:
 
     """ Move Functions """
     def move_shape_downward(self):
+        #print(self.inactive_time)
         if self.moveable_down():
-            for rect in self.rects:
-                rect.y += SQUARE_SIZE
+            if int(self.time) == 1:
+                for rect in self.rects:
+                    rect.y += SQUARE_SIZE
+                    self.time = 0
         else:
-            self.make_inactive()
+            if int(self.inactive_time) == 1:
+                self.make_inactive() 
+            else:
+                self.inactive_time += self.time_increment
+
 
     def move_shape_upward(self):
         if self.active:
@@ -169,9 +188,16 @@ class Shape:
         if self.moveable_left():
             for rect in self.rects:
                 rect.x -= SQUARE_SIZE
+            self.time = 0
+            self.inactive_time = 0
+
                 
     def move_shape_rightward(self):
         if self.moveable_right():
             for rect in self.rects:
                 rect.x += SQUARE_SIZE
+            self.time = 0
+            self.inactive_time = 0
+
+
     

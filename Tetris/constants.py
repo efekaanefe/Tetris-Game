@@ -23,10 +23,9 @@ TETRIS_SOUNDTRACK = pygame.mixer.music.load("tetris soundtrack.mp3")
 CLEAR_LINE_SOUND_EFFECT = pygame.mixer.Sound("clear line sound effect.mp3")
 
 
-FPS = 4
-KEY_DOWN_FPS_CHANGE = 8
+FPS = 60
 PIECE_REQUIRED_TO_INCREASE_LEVEL= 25
-FPS_INCREASE_ON_EACH_LEVEL = 0.2
+TIME_INCREMENT = 0.05
 
 BEST_SCORE_X = 20
 BEST_SCORE_Y = 250
