@@ -13,10 +13,6 @@ Score system is dynamic (depends on level, and how many lines you clear).
 
 
 # CONS:
-Pieces are inactivated immediately after touching, there is no delay which limits possible piece end-locations.
-
-When moving a piece left/right, clock keeps ticking which again limits possible piece end-locations.
-
 No animation.
 
 Rotation system doesn´t allow to rotate a piece that is at the edge, it would be better if it allows but shifts the piece a little.
